@@ -1,0 +1,9 @@
+build
+dist
+*.egg-info
+**/*.pyc
+*.JPG
+*.jgp
+CaculateFileAmount.py
+CountFile.py
+MoveImageFile.py
