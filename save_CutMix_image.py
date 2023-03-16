@@ -47,7 +47,7 @@ def improve_image(img):
 object_class = []
 file_image_name = []
 
-input_file_list = 'C:/Users/MVCLAB/Desktop/tools/cap'
+input_file_list = 'C:/Users/MVCLAB/Desktop/tools/candle'
 object_class = input_file_list.split('/')
 output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage'
 # output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage_improve'
@@ -97,7 +97,7 @@ for image_name in file_image_name:
     stringName = re.sub(".JPG","",image_name)
     image_np = np.array(augmented)
     ConvertToNP_image = cv2.cvtColor(image_np, cv2.COLOR_BGR2RGB)
-    cv2.imwrite(os.path.join(output_file_path, f'{stringName}__cutmix_{object_class[5]}.jpg'),ConvertToNP_image)
+    cv2.imwrite(os.path.join(output_file_path, f'{stringName}__cutmix_{object_class[5]}.JPG'),ConvertToNP_image)
 
 
 
