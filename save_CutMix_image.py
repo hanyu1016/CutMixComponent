@@ -47,10 +47,10 @@ def improve_image(img):
 object_class = []
 file_image_name = []
 
-input_file_list = 'C:/Users/MVCLAB/Desktop/tools/candle'
+input_file_list = 'C:/Users/MVCLAB/Desktop/tools/pcb1'
 object_class = input_file_list.split('/')
-output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage'
-# output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage_improve'
+# output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage'
+output_file_path = 'C:/Users/MVCLAB/Desktop/tools'+'/'+ object_class[5] + '_CutMix_Saveimage_improve_pro'
 
 
 if  not os.path.exists(output_file_path):
@@ -66,10 +66,10 @@ for image_name in file_image_name:
     resize_image = transforms.Resize([448,448])
     img = resize_image(img)
 
-    # h, w = improve_image(img)
+    h, w = improve_image(img)
 
-    h = img.size[0]
-    w = img.size[1]
+    # h = img.size[0]
+    # w = img.size[1]
 
     ratio_area = random.uniform(0.02, 0.15) * w * h
     log_ratio = torch.log(torch.tensor((0.3, 1 / 0.3)))
@@ -86,9 +86,12 @@ for image_name in file_image_name:
     box = [from_location_w, from_location_h, from_location_w + cut_w, from_location_h + cut_h]
     patch = img.crop(box) # In this crop image
 
-
+    # 對原本crop到的物件位置隨機貼上    
     to_location_h = int(random.uniform(0, h - cut_h))
     to_location_w = int(random.uniform(0, w - cut_w))
+    # 對整張圖片位置隨機貼上
+    # to_location_h = int(random.uniform(0, img.size[0] - cut_h))
+    # to_location_w = int(random.uniform(0, img.size[1] - cut_w))
 
     insert_box = [to_location_w, to_location_h, to_location_w + cut_w, to_location_h + cut_h]
     augmented = img.copy()
