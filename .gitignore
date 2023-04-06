@@ -2,9 +2,12 @@ build
 dist
 *.egg-info
 **/*.pyc
+*.jpg
 *.JPG
-*.jgp
 CaculateFileAmount.py
 CountFile.py
 MoveImageFile.py
 Synthetic_Anomaly_Process.py
+Resize.py
+Resize/Resize.py
+
